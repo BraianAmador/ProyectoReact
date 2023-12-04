@@ -1,19 +1,14 @@
+import React from "react";
+import MiLista from './MiLista';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <h1>Mi apliacion</h1>
-      <h2>Este es mi primer componente React</h2>
+      <h1>Mi apliacion de contactos</h1>
       <div className="parrafo">
-        <p>Bienvenido a mi aplicacion, esto fue creado con JavaScript en React</p>
+        <p>Esta aplicacion muestra los contactos almacenados: </p>
       </div>
-    
-      <br />
-      <MiLista />
-
-      <br />
-      <MiLista />
 
       <br />
       <MiLista />
@@ -22,18 +17,30 @@ function App() {
   );
 }
 
-function MiLista(){
-  return(
-    <div className="lista">
-      <h4>Mi lista de clientes:</h4>
-      <ul>
-        <li>Santiago</li>
-        <li>Micaela</li>
-        <li>Pedro</li>
-        <li>Marta</li>
-      </ul>
-    </div>
-  );
+class MiComponente extends React.Component {
+  state = {
+    visible: true
+  }
+  render(){
+    if(this.state.visible){
+    return (
+      <div>
+        Hola, este es un componente se encuentra visible.
+        <button onClick={() => this.setState({ visible: false
+        })}> X </button>
+      </div>
+    );
+    }
+    else{
+      return(
+      <div>
+      El contenido se encuentra oculto.
+      <button onClick={() => this.setState({ visible: true
+      })}> Mostrar </button>
+      </div>
+      );
+    }
+  }
 }
 
 export default App;
